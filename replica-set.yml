@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: metadata-service-rs
+  labels:
+    app: metadata-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: metadata-app
+  template:
+    metadata:
+      labels:
+        app: metadata-app
+    spec:
+      containers:
+        - name: metadata-service-container
+          image: shayan1337/metadata-service:v1

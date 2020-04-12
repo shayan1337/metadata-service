@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-mongo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db-mongodb-metadata
+  template:
+    metadata:
+      labels:
+        app: db-mongodb-metadata
+    spec:
+      containers:
+        - name: db-mongo-container-standalone
+          image: mongo:4.0.8
+          ports:
+            - containerPort: 27017
